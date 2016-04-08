@@ -12,28 +12,27 @@ resource "aws_security_group" "coreos" {
     to_port     = 22
     protocol    = "TCP"
     cidr_blocks = ["${var.ssh_from}"]
-    self        = true
   }
 
   ingress {
-    from_port = 4001
-    to_port   = 4001
-    protocol  = "TCP"
-    self      = true
+    from_port   = 4001
+    to_port     = 4001
+    protocol    = "TCP"
+    cidr_blocks = ["${var.vpc_cidr}"]
   }
 
   ingress {
-    from_port = 2379
-    to_port   = 2379
-    protocol  = "TCP"
-    self      = true
+    from_port   = 2379
+    to_port     = 2379
+    protocol    = "TCP"
+    cidr_blocks = ["${var.vpc_cidr}"]
   }
 
   ingress {
-    from_port = 2380
-    to_port   = 2380
-    protocol  = "TCP"
-    self      = true
+    from_port   = 2380
+    to_port     = 2380
+    protocol    = "TCP"
+    cidr_blocks = ["${var.vpc_cidr}"]
   }
 
   egress {
