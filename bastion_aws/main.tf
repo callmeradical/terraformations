@@ -2,6 +2,25 @@ provide "aws" {
   region = "${var.aws_region}"
 }
 
+resource "aws_security_group" "bastion" {
+  name        = "bastion_ssh"
+  description = "Allow ssh access"
+  vpc_id      = "${var.vpc_id}"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["${var.ssh_from}"]
+  }
+
+  tags {
+    Name      = "Bastion security group"
+    Project   = "${var.project}"
+    Terraform = "true"
+  }
+}
+
 resource "aws_iam_instance_profile" "bastion_box" {
   name  = "bastion_profile"
   roles = ["${aws_iam_role.role.name}"]
@@ -33,6 +52,8 @@ aws_instance "bastion_box" {
   monitoring                  = false
   associate_public_ip_address = true
   iam_instance_profile        = "${aws_iam_instance_profile.bastion_box.id}"
+  vpc_id                      = "${var.vpc_id}"
+  subnet_id                   = "${var.subnet_id}"
   vpc_security_group_ids      = ["${var.security_group}"]
 
   tags = {
