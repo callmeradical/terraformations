@@ -13,37 +13,37 @@ resource "aws_security_group" "coreos" {
   }
 }
 
-resource "aws_security_group_rule" "ssh" {
+resource "aws_security_group_rule" "22" {
   type              = "ingress"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = ["${var.ssh_from}"]
-  security_group_id = "${aws_security_group.coreos}"
+  security_group_id = "${aws_security_group.coreos.id}"
 }
 
-resource "aws_security_group_rule" "ssh" {
+resource "aws_security_group_rule" "4001" {
   type              = "ingress"
   from_port         = 4001
   to_port           = 4001
   protocol          = "tcp"
-  security_group_id = "${aws_security_group.coreos}"
+  security_group_id = "${aws_security_group.coreos.id}"
 }
 
-resource "aws_security_group_rule" "ssh" {
+resource "aws_security_group_rule" "2379" {
   type              = "ingress"
   from_port         = 2379
   to_port           = 2379
   protocol          = "tcp"
-  security_group_id = "${aws_security_group.coreos}"
+  security_group_id = "${aws_security_group.coreos.id}"
 }
 
-resource "aws_security_group_rule" "ssh" {
+resource "aws_security_group_rule" "2380" {
   type              = "ingress"
   from_port         = 2380
   to_port           = 2380
   protocol          = "tcp"
-  security_group_id = "${aws_security_group.coreos}"
+  security_group_id = "${aws_security_group.coreos.id}"
 }
 
 resource "aws_autoscaling_group" "etcd" {
