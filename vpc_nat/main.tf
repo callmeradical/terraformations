@@ -45,7 +45,7 @@ resource "aws_route_table" "private_a" {
   }
 
   tags {
-    Name = "AwesomeSauce - A"
+    Name = "${join(var.vpc_name, - A)}"
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_route_table" "private_b" {
   }
 
   tags {
-    Name = "AwesomeSauce - B"
+    Name = "${join(var.vpc_name, - B)}"
   }
 }
 
