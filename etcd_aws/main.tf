@@ -85,7 +85,7 @@ resource "aws_launch_configuration" "etcd" {
   image_id        = "${lookup(var.ami_id, var.aws_region)}"
   instance_type   = "t2.medium"
   key_name        = "${var.key_name}"
-  user_data       = "${var.user_data}"
+  user_data       = "${file(var.user_data)}"
   security_groups = ["${aws_security_group.coreos.id}"]
 
   lifecycle {
