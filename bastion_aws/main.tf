@@ -52,7 +52,6 @@ resource "aws_instance" "bastion_box" {
   monitoring                  = false
   associate_public_ip_address = true
   iam_instance_profile        = "${aws_iam_instance_profile.bastion_box.id}"
-  vpc_id                      = "${var.vpc_id}"
   subnet_id                   = "${var.subnet_id}"
   vpc_security_group_ids      = ["${aws_security_group.bastion.id}"]
 
