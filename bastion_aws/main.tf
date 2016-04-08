@@ -55,6 +55,10 @@ resource "aws_instance" "bastion_box" {
   subnet_id                   = "${var.subnet_id}"
   vpc_security_group_ids      = ["${aws_security_group.bastion.id}"]
 
+  provisioner "local-exec" {
+    command = "echo Bastion box located @ ${aws_instance.bastion_box.public_ip}"
+  }
+
   tags = {
     Name      = "${var.name}"
     Project   = "${var.project}"
