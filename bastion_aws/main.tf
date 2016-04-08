@@ -45,7 +45,7 @@ resource "aws_iam_role" "role" {
 EOF
 }
 
-aws_instance "bastion_box" {
+resource "aws_instance" "bastion_box" {
   ami                         = "${var.ami}"
   instance_type               = "${var.instance_type}"
   key_name                    = "${var.key_name}"
