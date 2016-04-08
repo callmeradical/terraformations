@@ -45,7 +45,7 @@ resource "aws_route_table" "private_a" {
   }
 
   tags {
-    Name = "${join(var.vpc_name, - A)}"
+    Name = "${var.vpc_name} - A}"
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_route_table" "private_b" {
   }
 
   tags {
-    Name = "${join(var.vpc_name, - B)}"
+    Name = "${var.vpc_name} - B}"
   }
 }
 
