@@ -5,45 +5,45 @@ provider "aws" {
 resource "aws_security_group" "coreos" {
   name        = "CoreOS security group"
   description = "Allows functionality for CoreOS"
+  vpc_id      = "${var.vpc_id}"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["${var.ssh_from}"]
+  }
+
+  ingress {
+    from_port = 4001
+    to_port   = 4001
+    protocol  = "tcp"
+  }
+
+  ingress {
+    from_port = 2379
+    to_port   = 2379
+    protocol  = "tcp"
+  }
+
+  ingress {
+    from_port = 2380
+    to_port   = 2380
+    protocol  = "tcp"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   tags {
     Name      = "CoreOS security group"
     Project   = "${var.project}"
     Terraform = "true"
   }
-}
-
-resource "aws_security_group_rule" "22" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  cidr_blocks       = ["${var.ssh_from}"]
-  security_group_id = "${aws_security_group.coreos.id}"
-}
-
-resource "aws_security_group_rule" "4001" {
-  type              = "ingress"
-  from_port         = 4001
-  to_port           = 4001
-  protocol          = "tcp"
-  security_group_id = "${aws_security_group.coreos.id}"
-}
-
-resource "aws_security_group_rule" "2379" {
-  type              = "ingress"
-  from_port         = 2379
-  to_port           = 2379
-  protocol          = "tcp"
-  security_group_id = "${aws_security_group.coreos.id}"
-}
-
-resource "aws_security_group_rule" "2380" {
-  type              = "ingress"
-  from_port         = 2380
-  to_port           = 2380
-  protocol          = "tcp"
-  security_group_id = "${aws_security_group.coreos.id}"
 }
 
 resource "aws_autoscaling_group" "etcd" {
@@ -78,11 +78,12 @@ resource "aws_autoscaling_group" "etcd" {
 }
 
 resource "aws_launch_configuration" "etcd" {
-  name          = "etcd_config"
-  image_id      = "${lookup(var.ami_id, var.aws_region)}"
-  instance_type = "t2.medium"
-  key_name      = "${var.key_name}"
-  user_data     = "${file("${var.user_data}")}"
+  name            = "etcd_config"
+  image_id        = "${lookup(var.ami_id, var.aws_region)}"
+  instance_type   = "t2.medium"
+  key_name        = "${var.key_name}"
+  user_data       = "${file("${var.user_data}")}"
+  security_groups = ["${aws_security_group.coreos.id}"]
 
   lifecycle {
     create_before_destroy = true
