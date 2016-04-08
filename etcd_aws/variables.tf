@@ -32,3 +32,5 @@ variable "user_data" {
 variable "project" {
   description = "The name of the project this is associated with"
 }
+
+variable "key_name" {}

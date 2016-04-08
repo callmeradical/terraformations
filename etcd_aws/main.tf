@@ -73,6 +73,7 @@ resource "aws_launch_configuration" "etcd" {
   name          = "etcd_config"
   image_id      = "${lookup(var.ami_id, var.aws_region)}"
   instance_type = "t2.medium"
+  key_name      = "${var.key_name}"
   user_data     = "${file("${var.user_data}")}"
 
   lifecycle {
