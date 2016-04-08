@@ -39,7 +39,7 @@ resource "aws_security_group" "coreos" {
 }
 
 resource "aws_autoscaling_group" "etcd" {
-  vpc_zone_identifier  = ["${var.subnet_1}, ${var.subnet_2}"]
+  vpc_zone_identifier  = ["${var.subnet_1}", "${var.subnet_2}"]
   name                 = "etcd"
   max_size             = 5
   min_size             = 3
