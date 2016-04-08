@@ -34,5 +34,10 @@ aws_instance "bastion_box" {
   associate_public_ip_address = true
   iam_instance_profile        = "${aws_iam_instance_profile.bastion_box.id}"
   vpc_security_group_ids      = ["${var.security_group}"]
-  tags                        = {}
+
+  tags = {
+    Name      = "${var.name}"
+    Project   = "${var.project}"
+    Terraform = "true"
+  }
 }
