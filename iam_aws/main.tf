@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_iam_policy" "policy" {
   name   = "${var.policy_name}"
-  policy = "file(${var.policy_path})"
+  policy = "${file(var.policy_path)}"
 }
 
 resource "aws_iam_role" "role" {
