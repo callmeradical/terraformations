@@ -33,6 +33,7 @@ resource "aws_iam_instance_profile" "profile" {
 }
 
 resource "aws_iam_policy_attachment" "role-attach" {
-  name  = "role-attach"
-  roles = ["${aws_iam_role.role.name}"]
+  name       = "role-attach"
+  policy_arn = "${aws_iam_policy.policy.arn}"
+  roles      = ["${aws_iam_role.role.name}"]
 }

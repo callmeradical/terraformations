@@ -25,8 +25,8 @@ variable "subnet_2" {
   description = "first subnet for vpc_zone_identifier"
 }
 
-variable "user_data" {
-  description = "cloud config to launch etcd cluster"
+variable "user_data_path" {
+  description = "path tocloud config to launch etcd cluster"
 }
 
 variable "project" {
