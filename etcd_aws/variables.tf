@@ -36,6 +36,7 @@ variable "project" {
 variable "readonly_instance_profile" {
   description = "The read only role for instances."
 }
+
 variable "key_name" {}
 
 variable "vpc_id" {}

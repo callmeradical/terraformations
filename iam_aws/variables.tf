@@ -1,3 +1,7 @@
+variable "aws_region" {
+  description = "Desired region to build infra."
+}
+
 variable "profile_name" {
   description = "The name of the IAM profile to create"
 }

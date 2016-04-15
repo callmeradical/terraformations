@@ -1,4 +1,6 @@
-variable "aws_region" {}
+variable "aws_region" {
+  description = "Desired region to build infra."
+}
 
 variable "vpc_id" {}
 
