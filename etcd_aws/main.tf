@@ -87,7 +87,7 @@ resource "aws_launch_configuration" "etcd" {
   key_name        = "${var.key_name}"
   user_data       = "${file(var.user_data)}"
   security_groups = ["${aws_security_group.coreos.id}"]
-
+  iam_instance_profile = "${var.readonly_instance_profile}"
   lifecycle {
     create_before_destroy = true
   }
