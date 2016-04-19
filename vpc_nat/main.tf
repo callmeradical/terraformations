@@ -6,7 +6,8 @@ resource "aws_vpc" "default" {
   cidr_block = "${var.default_vpc_cidr}"
 
   tags {
-    Name = "${var.vpc_name}"
+    Name      = "${var.vpc_name}"
+    Terraform = true
   }
 }
 
@@ -45,7 +46,8 @@ resource "aws_route_table" "private_a" {
   }
 
   tags {
-    Name = "${var.vpc_name} - A}"
+    Name      = "${var.vpc_name} - A"
+    Terraform = true
   }
 }
 
@@ -58,7 +60,8 @@ resource "aws_route_table" "private_b" {
   }
 
   tags {
-    Name = "${var.vpc_name} - B}"
+    Name      = "${var.vpc_name} - B"
+    Terraform = true
   }
 }
 
