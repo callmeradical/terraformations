@@ -22,7 +22,7 @@ resource "aws_autoscaling_group" "asg" {
   max_size             = 5
   min_size             = 3
   desired_capacity     = 3
-  launch_configuration = "${aws_launch_configuration.etcd.name}"
+  launch_configuration = "${aws_launch_configuration.lc.name}"
 
   lifecycle {
     create_before_destroy = true
