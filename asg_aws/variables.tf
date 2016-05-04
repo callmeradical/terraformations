@@ -1,6 +1,4 @@
-variable "ami_id" {
-  type = "map"
-}
+variable "ami_id" {}
 
 variable "aws_region" {}
 

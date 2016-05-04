@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_launch_configuration" "lc" {
   name                 = "${var.name}-config"
-  image_id             = "${lookup(var.ami_id, var.aws_region)}"
+  image_id             = "${var.ami_id}"
   instance_type        = "${var.instance_type}"
   key_name             = "${var.key_name}"
   user_data            = "${file(var.user_data_path)}"
