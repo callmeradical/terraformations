@@ -31,7 +31,6 @@ resource "aws_elb" "device" {
     interval            = 30
   }
 
-  instances                   = ["${var.instances}"]
   cross_zone_load_balancing   = true
   idle_timeout                = 400
   connection_draining         = true

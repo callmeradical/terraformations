@@ -32,8 +32,4 @@ variable "target" {
   description = "The Health Check target for the ELB"
 }
 
-variable "instances" {
-  description = "an array of instances to join to the loadbalancer"
-}
-
 variable "service_name" {}
