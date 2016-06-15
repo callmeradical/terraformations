@@ -17,3 +17,7 @@ output "subnet_2" {
 output "public_1" {
   value = "${aws_subnet.public_a.id}"
 }
+
+output "public_2" {
+  value = "${aws_subnet.public_b.id}"
+}
