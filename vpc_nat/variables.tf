@@ -25,3 +25,7 @@ variable "private_b_subnet" {
 variable "vpc_name" {
   description = "The Name of My VPC"
 }
+
+variable "az1" {}
+
+variable "az2" {}

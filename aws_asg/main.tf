@@ -19,8 +19,8 @@ resource "aws_autoscaling_group" "asg" {
   vpc_zone_identifier  = ["${var.subnet_1}", "${var.subnet_2}"]
   name                 = "${var.name}-asg"
   max_size             = 5
-  min_size             = 3
-  desired_capacity     = 3
+  min_size             = 2
+  desired_capacity     = 2
   launch_configuration = "${aws_launch_configuration.lc.name}"
 
   lifecycle {
