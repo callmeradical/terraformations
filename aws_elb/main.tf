@@ -1,6 +1,7 @@
 resource "aws_elb" "device" {
-  name    = "${var.elb_name}"
-  subnets = ["${var.subnet1}", "${var.subnet2}"]
+  name            = "${var.elb_name}"
+  subnets         = ["${var.subnet1}", "${var.subnet2}"]
+  security_groups = ["${var.security_group}"]
 
   access_logs {
     bucket        = "${var.s3_log_bucket}"

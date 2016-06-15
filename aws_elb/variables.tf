@@ -6,6 +6,8 @@ variable "subnet1" {}
 
 variable "subnet2" {}
 
+variable "security_group" {}
+
 variable "s3_log_bucket" {
   description = "The Name of the bucket to capture load balancer logs."
 }
