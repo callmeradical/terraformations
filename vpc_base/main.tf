@@ -22,28 +22,28 @@ resource "aws_route" "internet_access" {
 }
 
 resource "aws_subnet" "public_a" {
-  availability_zone       = "us-east-1a"
+  availability_zone       = "${var.az1}"
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "${var.public_a_subnet}"
   map_public_ip_on_launch = true
 }
 
 resource "aws_subnet" "public_b" {
-  availability_zone       = "us-east-1b"
+  availability_zone       = "${var.az2}"
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "${var.public_b_subnet}"
   map_public_ip_on_launch = true
 }
 
 resource "aws_subnet" "private_a" {
-  availability_zone       = "us-east-1a"
+  availability_zone       = "${var.az1}"
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "${var.private_a_subnet}"
   map_public_ip_on_launch = false
 }
 
 resource "aws_subnet" "private_b" {
-  availability_zone       = "us-east-1b"
+  availability_zone       = "${var.az2}"
   vpc_id                  = "${aws_vpc.default.id}"
   cidr_block              = "${var.private_b_subnet}"
   map_public_ip_on_launch = false
