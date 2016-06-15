@@ -26,16 +26,6 @@ resource "aws_route" "internet_access" {
   gateway_id             = "${aws_internet_gateway.default.id}"
 }
 
-resource "aws_route_table_association" "public_a" {
-  subnet_id      = "${aws_subnet.public_a.id}"
-  route_table_id = "${aws_route_table.internet_access.id}"
-}
-
-resource "aws_route_table_association" "public_b" {
-  subnet_id      = "${aws_subnet.public_a.id}"
-  route_table_id = "${aws_route_table.internet_access.id}"
-}
-
 resource "aws_subnet" "public_a" {
   availability_zone       = "${var.az1}"
   vpc_id                  = "${aws_vpc.default.id}"
