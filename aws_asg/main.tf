@@ -3,7 +3,6 @@ provider "aws" {
 }
 
 resource "aws_launch_configuration" "lc" {
-  name                 = "${var.name}-config"
   image_id             = "${var.ami_id}"
   instance_type        = "${var.instance_type}"
   key_name             = "${var.key_name}"
