@@ -2,9 +2,9 @@ variable "elb_name" {
   description = "The name of the Load Balancer"
 }
 
-variable "az1" {}
+variable "subnet1" {}
 
-variable "az2" {}
+variable "subnet2" {}
 
 variable "s3_log_bucket" {
   description = "The Name of the bucket to capture load balancer logs."
