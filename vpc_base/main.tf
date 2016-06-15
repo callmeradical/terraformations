@@ -7,7 +7,7 @@ resource "aws_vpc" "default" {
 
   tags {
     Name      = "${var.vpc_name}"
-    Terraform = true
+    Terraform = "true"
   }
 }
 
@@ -16,7 +16,7 @@ resource "aws_internet_gateway" "default" {
 
   tags {
     Name      = "${var.vpc_name}"
-    Terraform = true
+    Terraform = "true"
   }
 }
 
@@ -34,7 +34,7 @@ resource "aws_subnet" "public_a" {
 
   tags {
     Name      = "${var.vpc_name}-public-a"
-    Terraform = true
+    Terraform = "true"
   }
 }
 
@@ -46,7 +46,7 @@ resource "aws_subnet" "public_b" {
 
   tags {
     Name      = "${var.vpc_name}-public-b"
-    Terraform = true
+    Terraform = "true"
   }
 }
 
@@ -58,7 +58,7 @@ resource "aws_subnet" "private_a" {
 
   tags {
     Name      = "${var.vpc_name}-private-a"
-    Terraform = true
+    Terraform = "true"
   }
 }
 
@@ -70,6 +70,6 @@ resource "aws_subnet" "private_b" {
 
   tags {
     Name      = "${var.vpc_name}-private-b"
-    Terraform = true
+    Terraform = "true"
   }
 }
