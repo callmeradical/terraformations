@@ -43,5 +43,5 @@ output "instance_profile_unique_id" {
 }
 
 output "depends_id" {
-  value = "${null_resource.dummy_dependency.id}"
+  value = "${null_resource.dummy.id}"
 }
