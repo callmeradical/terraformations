@@ -17,3 +17,5 @@ variable "policy_name" {
 variable "policy_path" {
   description = "The path to an IAM policy doc in JSON format"
 }
+
+variable "depends_id" {}

@@ -37,3 +37,7 @@ resource "aws_iam_policy_attachment" "role-attach" {
   policy_arn = "${aws_iam_policy.policy.arn}"
   roles      = ["${aws_iam_role.role.name}"]
 }
+
+null_resource "dummy_dependency" {
+  depends_on = ["aws_iam_role.role"]
+}
