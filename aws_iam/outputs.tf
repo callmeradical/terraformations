@@ -41,7 +41,3 @@ output "instance_profile_roles" {
 output "instance_profile_unique_id" {
   value = "${aws_iam_instance_profile.profile.unique_id}"
 }
-
-output "depends_id" {
-  value = "${null_resource.dummy.id}"
-}
