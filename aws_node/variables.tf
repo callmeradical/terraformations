@@ -21,3 +21,5 @@ variable "instance_type" {}
 variable "name" {}
 
 variable "project" {}
+
+variable "user_data" {}

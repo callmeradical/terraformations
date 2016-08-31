@@ -61,6 +61,7 @@ resource "aws_instance" "client" {
   iam_instance_profile        = "${aws_iam_instance_profile.client.id}"
   subnet_id                   = "${var.subnet_id}"
   vpc_security_group_ids      = ["${aws_security_group.client.id}"]
+  user_data                   = "${var.user_data}"
 
   tags = {
     Name      = "${var.name}"
